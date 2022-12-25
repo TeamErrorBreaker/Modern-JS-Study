@@ -43,7 +43,7 @@
     }
     console.log(count) // 3
 
-2. 타입변환과 단축 평가
+3. 타입변환과 단축 평가
 [1] 문자열타입으로 변환
     ex) var x =10;  // number
         var str = x.toString();
@@ -67,3 +67,68 @@
     false || anything -> anything
     true && anything -> anything
     false && anything -> false
+
+4.객체 리터럴
+
+[1]객체란 0개 이상의 프로퍼티로 궝된 집합이며, 프로퍼티는 키key와 값value로 구성딘다
+
+    var person = {
+        name: 'Lee',
+        age: 20
+    }
+
+    여기서 name, age 는 프로퍼티 이고 프로퍼티키는 name,age 이며 프로퍼티 값으론 'Lee',20이다.
+
+    var person = {
+        name: 'Lee',
+        age: 20,
+        num: 0
+        increase : function(){
+            this.num++;
+        }
+    }
+    프로퍼티 값이 함수인경우는 일반함수와 구분하기위해 메서드(method)라고 부른다. increase가 메서드라고 할수있다.
+    person.increase()로 접근할수 있다.
+
+[2]프로퍼티 접근
+    var person = {
+        name:'lee'
+    }
+    마침표로 접근하기
+    person.name // lee
+
+    대괄호로 접근하기
+    person['name']; // lee ** 대괄호로 접근을 할 때 반드시 프로퍼티의 key는 따옴표로 접근을해야한다 person[name] -> not defined 에러뜸
+
+[3]프로퍼티 동적 생성
+
+    var person = {
+        name:'lee'
+    }
+
+    person.age = 20; 
+
+    console.log(person) // {name:'lee', age:'20'}
+
+[4]프로퍼티 삭제
+    var person = {
+        name:'lee'
+    }
+
+    person.age = 20; 
+    delete person.age;
+
+    console.log(person) // {name:'lee'}
+
+[5] 객체의비교
+
+var person1 = {
+    name:'lee'
+}
+
+var person2 = {
+    name:'lee'
+}
+
+console.log(person1===person2) // 같은 변수를 가르키는 내용은 같지만 각 다른메모리에 저장되있는 별개의 객체이기 때문이 false가 반환된다.
+console.log(person1.name===person2.name) // 하지만 프로퍼티 값을 참조하는 person1.name , person2.name은 값으로 표현될수있는 표현식으로 표현식 원시값 lee로평가되어 true가 됨.
