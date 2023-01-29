@@ -80,3 +80,59 @@ person.name
 근데 여기서 const person = 10; //이건 에러 남 
 
 이해됨? 오키?? 도키
+
+16. 프로퍼티 어트리뷰트
+이건 잘이해가 안되어 정리를 어떻게해야할지.. 감이 안잡힘 하루에 한번씩 219 ~ 232페이지 예제라도 정독 ㄱㄱㄱ 제발 하자
+
+please god dam fuck student okay?
+
+
+17. 생성자 함수에 의한 객체 생성
+
+[1] object 생성자 함수 생성
+const person = new Object();
+
+person.name = 'Lee';
+person.say = function(){
+    console.log('HI MY IS ' + this.name);
+}
+console.log(person); // {name: 'Lee', say: ƒ}
+person.say(); //HI MY IS Lee
+
+생성자 함수란 new 연산자와 함께 호출하여 객체(인스턴스)를 생성하는 함수를 말한다.
+생성자 함수에 의해 생성된 객체를 인스턴스라고 말한다.
+자바스크립트는 Object 생성자 이외에도 String, Number, Boolean, Function, Array, Date등 빌트인(built-in) 생성자 함수를 제공함.
+
+new 연산자와 함께호출하면 해당 함수는 생성자 함수로 작동됨 but new연산자와 함께 호출을 안하면 그냥 일반 함수로 호출함
+
+function Circle(radius){
+    this.radius = radius;
+    this.getDai = function(){
+        return 2 * this.radius;
+    }
+}
+
+const circle3 = Circle(15); // 그냥함수로 호출함
+console.log(circle3); //undefinde
+//일반함수로 호출된 Circle 내에 있는 this는 전역 객체로 됨.
+console.log(radius); //15;
+
+1.인스턴스 생성과 this바인딩
+
+function Circle(radius){
+    //1.암묵적으로 빈 객체가 생성ㅅ됨
+    console.log(this); //Circle{}
+
+    this.radius = radius; // 여기서 매개변수 radius=1 이면 Circle{radius:1}이런식으로 추가됨
+    this.getDai = function(){
+        return 2 * this.radius;// 여기는 Circle{radius:1, getDai:ƒ}이런식으로 추가됨
+    }
+    console.log(new.target)
+}
+
+//여기서 new.target을 사용하면 new연산자를 선언한 생성자함수에 대한것을 가져올수있음
+//ex)
+const test = new Circle(5); //new 연산자와 함께 생성자 함수로서 호출되면 함수 내부의 new.target은 함수 자신을 가리킨다. => ƒ Circle(radius){...}
+
+const test2 = Circle(5);    //그렇지않는것은 일반함수로 실행되 undefined로 실행됨.
+
