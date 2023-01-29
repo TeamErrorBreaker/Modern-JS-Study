@@ -118,16 +118,18 @@ console.log(circle3); //undefinde
 console.log(radius); //15;
 
 1.인스턴스 생성과 this바인딩
-
-function Circle(radius){
+책 페이지 241~ 244 읽어보기 읽어보니 이해됨 근데 담에 이걸봤을때 이해 못할수도잇음 ㅋ;
+function Circle(radius)
+{
     //1.암묵적으로 빈 객체가 생성ㅅ됨
-    console.log(this); //Circle{}
+   // console.log(this); //Circle{}
 
     this.radius = radius; // 여기서 매개변수 radius=1 이면 Circle{radius:1}이런식으로 추가됨
     this.getDai = function(){
         return 2 * this.radius;// 여기는 Circle{radius:1, getDai:ƒ}이런식으로 추가됨
     }
-    console.log(new.target)
+   // console.log(new.target)
+   // return 2 * radius;
 }
 
 //여기서 new.target을 사용하면 new연산자를 선언한 생성자함수에 대한것을 가져올수있음
@@ -136,3 +138,5 @@ const test = new Circle(5); //new 연산자와 함께 생성자 함수로서 호
 
 const test2 = Circle(5);    //그렇지않는것은 일반함수로 실행되 undefined로 실행됨.
 
+console.log(test.getDai())
+console.log(test2.getDai())
