@@ -92,5 +92,3 @@ return x;      -----------------                        |
 }                                                       |
 console.log(x); // x is not defined----------------------
 
-
-15.let, const 키워드와 블록 레벨 스코프와 블록레벨스코프
